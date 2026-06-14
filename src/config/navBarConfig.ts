@@ -37,7 +37,7 @@ const getDynamicNavBarConfig = (): NavBarConfig => {
 	links.push(LinkPresets.Friends);
 
 	// 留言板
-	links.push(LinkPresets.Guestbook);
+	// links.push(LinkPresets.Guestbook);
 
 	// 我的及其子菜单
 	links.push({
@@ -49,7 +49,7 @@ const getDynamicNavBarConfig = (): NavBarConfig => {
 			LinkPresets.Gallery,
 
 			// 番组计划
-			LinkPresets.Bangumi,
+			// LinkPresets.Bangumi,
 		],
 	});
 
