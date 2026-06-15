@@ -11,7 +11,7 @@ tags:
   - 模板
 category: 文章示例
 draft: false
-image: ./images/firefly2.avif
+image: ../images/firefly2.avif
 ---
 
 ## 🌟 项目概述
@@ -33,7 +33,7 @@ image: ./images/firefly2.avif
 
 ::github{repo="saicaca/fuwari"}
 
-![Firefly](./images/1.avif)
+![Firefly](../images/1.avif)
 
 
 ## 🚀 技术架构
