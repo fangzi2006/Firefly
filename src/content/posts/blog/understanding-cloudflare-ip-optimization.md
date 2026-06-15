@@ -3,7 +3,6 @@ title: 浅谈对 Cloudflare IP 优选的理解
 published: 2026-06-14
 updated: 2026-06-14
 description: 这是文章的简短描述
-image: ./cover.jpg
 tags:
   - CloudFlare
   - 网络
@@ -11,7 +10,7 @@ category: 教程
 draft: false
 auther: fangzi
 ---
-# 核心原理
+## 核心原理
 
 Cloudflare IP 优选的核心目的，是绕过 Cloudflare 默认分配的高延迟或绕路节点，强制让用户的网络流量通过低延迟、低丢包率的优质边缘节点接入，从而提升国内访问速度。该架构依赖两个技术机制：
 
@@ -55,7 +54,7 @@ graph LR
 ## 优选ip
 
 * **统优选域名**
-常用的社区优选域名：`https://cf.090227.xyz`
+常用的社区优选域名：`*.cf.090227.xyz`
 
 ## 常规域名优选（最常见方案）
 
@@ -69,6 +68,6 @@ graph LR
 * **具体步骤**：
  1. 在cf里用辅助域名新建一个dns解析，指向源站，比如可以直接使用根域名`fuzhu.com`
  2. 前往辅助域名的 SSL/TLS -> 自定义主机名 ，添加一个自定义主机名，比如`www.example.com`，然后设置源服务器为刚才的`fuzhu.com`，这里推荐使用http验证，方便快捷。
- 3. 在cf里添加一个CNAME解析到优选域名`https://cf.090227.xyz`，这里使用`cdn.fuzhu.com`。
+ 3. 在cf里添加一个CNAME解析到优选域名`cf.090227.xyz`，这里使用`cdn.fuzhu.com`。
  4. 将你的业务域名`www.example.com`解析到你指向优选域名的那个域名`cdn.fuzhu.com`
  5. 恭喜你，如果你的操作正确，到这里你应该可以访问了。当你访问你的业务域名`www.example.com`时，会先解析到优选域名`https://cf.090227.xyz`，然后解析到优选ip，也就是cf的边缘节点，cf的边缘节点检测到你使用了设置的自定义主机名`www.example.com`，于是回源到了你的辅助域名`fuzhu.com`，而这个域名指向了你的源站，于是你便完成了对源站的访问。
